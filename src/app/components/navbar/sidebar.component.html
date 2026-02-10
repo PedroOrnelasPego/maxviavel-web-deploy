@@ -1,0 +1,82 @@
+<div class="wrapper">
+  <div class="brand">
+    <img class="logo" src="/file.png" alt="MaxViable" />
+    <span>MaxViable</span>
+  </div>
+  <button nz-button nzType="primary" (click)="toggleCollapsed()">
+    <nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></nz-icon>
+  </button>
+  <ul
+    nz-menu
+    nzMode="inline"
+    nzTheme="dark"
+    [nzInlineCollapsed]="isCollapsed"
+    class="menu"
+  >
+    <li
+      nz-menu-item
+      nz-tooltip
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Menu principal' : ''"
+      routerLink="/"
+      routerLinkActive="ant-menu-item-selected"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <nz-icon nzType="home"></nz-icon>
+      <span>Menu principal</span>
+    </li>
+    <li
+      *ngIf="isStudyRoute"
+      nz-submenu
+      nzTitle="Estudo em andamento"
+      nzIcon="profile"
+    >
+      <ul>
+        <li
+          *ngFor="let step of steps; let i = index"
+          nz-menu-item
+          [nzSelected]="activeStep === i"
+          (click)="goToStep(i)"
+        >
+          {{ i + 1 }}. {{ step }}
+        </li>
+      </ul>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Aprova estudo' : ''"
+    >
+      <nz-icon nzType="check-circle"></nz-icon>
+      <span>Aprova estudo</span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'FAQ' : ''"
+    >
+      <nz-icon nzType="question-circle"></nz-icon>
+      <span>FAQ</span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Glossario' : ''"
+    >
+      <nz-icon nzType="book"></nz-icon>
+      <span>Glossario</span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Dashboard' : ''"
+    >
+      <nz-icon nzType="dashboard"></nz-icon>
+      <span>Dashboard</span>
+    </li>
+  </ul>
+</div>

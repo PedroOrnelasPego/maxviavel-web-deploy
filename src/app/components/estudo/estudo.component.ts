@@ -9,7 +9,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { StepperComponent } from '../../components/stepper/stepper.component';
+import { StepperComponent } from '../stepper/stepper.component';
 import { Chart, registerables } from 'chart.js';
 import { StepStateService } from '../../services/step-state.service';
 

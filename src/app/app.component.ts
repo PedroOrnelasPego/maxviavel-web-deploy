@@ -12,5 +12,5 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
   standalone: true,
 })
 export class AppComponent {
-  title = 'maxviabil';
+  title = 'MaxViable';
 }

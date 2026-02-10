@@ -1,0 +1,19 @@
+<nav class="stepper-wrap">
+  <div class="stepper">
+    <button
+      *ngFor="let s of steps; let i = index"
+      type="button"
+      class="step"
+      [class.active]="i === active"
+      (click)="setActive(i)"
+      [attr.aria-current]="i === active"
+    >
+      <div class="circle">{{ i + 1 }}</div>
+      <div class="text">
+        <div class="title">{{ s.title }}</div>
+        <div class="subtitle">{{ s.subtitle }}</div>
+      </div>
+      <div *ngIf="i < steps.length - 1" class="bar"></div>
+    </button>
+  </div>
+</nav>

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeroComponent } from '../../components/hero/hero.component';
+import { ActionCardComponent } from '../../components/action-card/action-card.component';
 import { Router } from '@angular/router';
+import { NovoProjetoComponent } from './novo-projeto/novo-projeto.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeroComponent],
+  imports: [CommonModule, ActionCardComponent, NovoProjetoComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
