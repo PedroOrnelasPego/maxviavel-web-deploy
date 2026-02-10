@@ -24,7 +24,7 @@ export class EstudoComponent implements AfterViewInit, OnDestroy, OnInit {
   @ViewChild('salesChart') salesChartRef?: ElementRef<HTMLCanvasElement>;
   @ViewChild('revenueChart') revenueChartRef?: ElementRef<HTMLCanvasElement>;
 
-  steps = [
+  steps: Array<{ title: string; subtitle?: string }> = [
     { title: 'Identificacao do projeto', subtitle: 'Dados iniciais' },
     { title: 'Cenarios', subtitle: 'Premissas' },
     { title: 'Orcamento de obras', subtitle: 'Custos diretos' },
