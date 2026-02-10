@@ -1,0 +1,80 @@
+<section class="home">
+  <app-hero
+    (create)="onCreateStudy()"
+    (consult)="onConsultStudy()"
+    (approve)="onApproveStudy()"
+  ></app-hero>
+
+  <div
+    class="modal-backdrop"
+    *ngIf="showCreateModal"
+    (click)="closeCreateModal()"
+  >
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Novo projeto</h3>
+        <p>Preencha os dados basicos para iniciar.</p>
+      </div>
+
+      <div class="form-grid">
+        <div class="field full">
+          <label>Nome do projeto</label>
+          <input type="text" placeholder="Nome do projeto" />
+        </div>
+        <div class="field full">
+          <textarea rows="2" placeholder="Adicionar descricao..."></textarea>
+        </div>
+        <div class="field">
+          <label>Data de inicio do projeto</label>
+          <input type="date" />
+        </div>
+        <div class="field">
+          <label>Identificador</label>
+          <input type="text" placeholder="Opcional" />
+        </div>
+        <div class="field">
+          <label>Estado</label>
+          <select>
+            <option>Selecione um estado</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Cidade</label>
+          <select>
+            <option>Selecione uma cidade</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Tipologia do projeto</label>
+          <div class="type-grid">
+            <button type="button" class="type-card active">Urbanismo</button>
+            <button type="button" class="type-card">Incorporacao</button>
+          </div>
+          <p class="hint">
+            Envolve a venda de terrenos ou lotes e a construcao de edificacoes.
+          </p>
+        </div>
+        <div class="field full">
+          <div class="meta-row">
+            <span class="meta-chip">Plano Teste</span>
+            <span class="meta-chip">126% a.m.</span>
+            <span class="meta-chip">1 fase de aprovacao</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button
+          class="modal-secondary"
+          type="button"
+          (click)="closeCreateModal()"
+        >
+          Cancelar
+        </button>
+        <button class="modal-primary" type="button" (click)="confirmCreate()">
+          Concluir
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

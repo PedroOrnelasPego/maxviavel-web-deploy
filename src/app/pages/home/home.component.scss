@@ -1,0 +1,140 @@
+.home {
+  padding: 20px 24px;
+  background: #ffffff;
+  color: #0f1724;
+}
+
+/* small hero adjustments */
+.hero {
+  margin-bottom: 18px;
+}
+.hero h1 {
+  color: #0f1724;
+}
+.hero .subtitle {
+  color: #6b7280;
+}
+.cards app-action-card {
+  margin: 0 6px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 16, 33, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 20;
+}
+.modal {
+  width: min(720px, 92vw);
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 22px 20px;
+  box-shadow: 0 18px 40px rgba(7, 16, 33, 0.18);
+}
+.modal-header h3 {
+  margin: 0 0 4px;
+}
+.modal-header p {
+  margin: 0 0 12px;
+  color: #6b7280;
+  font-size: 13px;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+.field {
+  display: grid;
+  gap: 6px;
+}
+.field.full {
+  grid-column: 1 / -1;
+}
+label {
+  font-size: 12px;
+  color: #374151;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #0f1724;
+  background: #ffffff;
+}
+textarea {
+  resize: vertical;
+}
+.type-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.type-card {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 600;
+}
+.type-card.active {
+  border-color: #0f9f9b;
+  color: #0f9f9b;
+  background: #e6f6f5;
+}
+.hint {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #6b7280;
+}
+.meta-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.meta-chip {
+  background: #f3f4f6;
+  color: #4b5563;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+.modal-secondary {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #374151;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.modal-primary {
+  border: 0;
+  background: #0f9f9b;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.modal-primary:hover {
+  background: #0b7f7b;
+}
+
+@media (max-width: 720px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

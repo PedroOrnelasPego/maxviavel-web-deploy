@@ -1,0 +1,27 @@
+<app-sidebar></app-sidebar>
+
+<header class="topbar">
+  <div class="topbar-icons">
+    <button class="icon-btn" type="button" aria-label="Bug">
+      <nz-icon nzType="bug" nzTheme="outline"></nz-icon>
+    </button>
+    <button class="icon-btn" type="button" aria-label="Notificacoes">
+      <nz-icon nzType="bell"></nz-icon>
+    </button>
+    <button class="icon-btn" type="button" aria-label="Configuracoes">
+      <nz-icon nzType="setting"></nz-icon>
+    </button>
+    <button class="icon-btn" type="button" aria-label="Perfil">
+      <nz-icon nzType="user"></nz-icon>
+    </button>
+  </div>
+</header>
+
+<div class="app-shell">
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+  <footer class="app-footer">
+    Copyright © 2026 - MaxViable | All Rights Reserved
+  </footer>
+</div>

@@ -1,0 +1,145 @@
+.flow {
+  padding: 20px 24px;
+  background: #ffffff;
+  color: #0f1724;
+  position: relative;
+}
+.flow.with-insights {
+  padding-right: 360px;
+}
+.flow-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.back-btn {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #374151;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.panel-btn {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #374151;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.top {
+  position: sticky;
+  top: 56px;
+  z-index: 4;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+.stepper-card {
+  width: 100%;
+  max-width: 1200px;
+  background: #ffffff;
+  border: 1px solid #e6edf3;
+  border-radius: 12px;
+  padding: 8px 12px;
+  box-shadow: 0 1px 4px rgba(15, 23, 36, 0.06);
+  overflow: hidden;
+}
+.content {
+  margin-top: 20px;
+  color: #0f1724;
+}
+.lead {
+  color: #4b5563;
+}
+
+.insights {
+  position: fixed;
+  top: 56px;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  background: #ffffff;
+  border-left: 1px solid #e6edf3;
+  box-shadow: -6px 0 16px rgba(7, 16, 33, 0.08);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+  z-index: 8;
+}
+.insights.collapsed {
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none;
+}
+.insights-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.insights-header h3 {
+  margin: 0;
+  font-size: 14px;
+}
+.icon-toggle {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+.insights-section {
+  display: grid;
+  gap: 8px;
+}
+.insight-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #4b5563;
+}
+.insight-row strong {
+  color: #0f1724;
+}
+.chart-card {
+  border: 1px solid #e6edf3;
+  border-radius: 12px;
+  padding: 12px;
+  background: #ffffff;
+  display: grid;
+  gap: 8px;
+  height: 220px;
+  grid-template-rows: auto 1fr;
+}
+.chart-title {
+  font-size: 12px;
+  color: #4b5563;
+}
+.chart-card canvas {
+  width: 100%;
+  height: 160px;
+}
+@media (max-width: 1200px) {
+  .flow.with-insights {
+    padding-right: 0;
+  }
+  .insights {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 900px) {
+  .flow-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

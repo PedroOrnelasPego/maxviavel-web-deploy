@@ -1,0 +1,65 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 256px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 16px;
+  background: linear-gradient(90deg, #0f9f9b, #0b5ea8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 8px rgba(7, 16, 33, 0.12);
+  z-index: 9;
+}
+.topbar-icons {
+  display: flex;
+  gap: 8px;
+}
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 0;
+  background: #ffffff;
+  color: #0f1724;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.icon-btn:hover {
+  background: #e6edf3;
+}
+
+.app-shell {
+  margin-left: 256px;
+  margin-top: 56px;
+  transition: margin-left 0.2s;
+}
+app-sidebar.collapsed + .topbar {
+  left: 80px;
+}
+app-sidebar.collapsed + .topbar + .app-shell {
+  margin-left: 80px;
+}
+.app-main {
+  min-height: 100vh;
+  padding: 12px 24px;
+  background: #f3f6fb;
+}
+.app-footer {
+  text-align: center;
+  padding: 12px 24px 20px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+@media (max-width: 800px) {
+  .topbar {
+    left: 0;
+  }
+  .app-shell {
+    margin-left: 0;
+  }
+}
