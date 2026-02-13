@@ -25,14 +25,14 @@ export class EstudoComponent implements AfterViewInit, OnDestroy, OnInit {
   @ViewChild('revenueChart') revenueChartRef?: ElementRef<HTMLCanvasElement>;
 
   steps: Array<{ title: string; subtitle?: string }> = [
-    { title: 'Identificacao do projeto', subtitle: 'Dados iniciais' },
-    { title: 'Cenarios', subtitle: 'Premissas' },
-    { title: 'Orcamento de obras', subtitle: 'Custos diretos' },
-    { title: 'Negociacao de terreno', subtitle: 'Ajustes' },
-    { title: 'Estruturacao da receita', subtitle: 'Precos e vendas' },
-    { title: 'Estruturacao das despesas e custos', subtitle: 'Operacao' },
-    { title: 'Estruturacao das fontes de recursos', subtitle: 'Financiamento' },
-    { title: 'Sensibilidade de riscos', subtitle: 'Cenarios' },
+    { title: 'Identificação do projeto', subtitle: 'Dados iniciais' },
+    { title: 'Cenários', subtitle: 'Premissas' },
+    { title: 'Orçamento de obras', subtitle: 'Custos diretos' },
+    { title: 'Negociação de terreno', subtitle: 'Ajustes' },
+    { title: 'Estruturação da receita', subtitle: 'Preços e vendas' },
+    { title: 'Estruturação das despesas e custos', subtitle: 'Operação' },
+    { title: 'Estruturação das fontes de recursos', subtitle: 'Financiamento' },
+    { title: 'Sensibilidade de riscos', subtitle: 'Cenários' },
     { title: 'Resultado', subtitle: 'Resumo final' },
   ];
   active = 0;

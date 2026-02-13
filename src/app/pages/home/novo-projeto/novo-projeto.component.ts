@@ -7,6 +7,18 @@ import {
   IbgeCity,
 } from '../../../services/ibge-localidades.service';
 
+export interface NovoProjetoFormValue {
+  name: string;
+  description: string;
+  startDate: string;
+  identifier: string;
+  stateId: number | null;
+  cityId: number | null;
+  type: 'urbanismo' | 'incorporacao';
+  stateName: string;
+  cityName: string;
+}
+
 @Component({
   selector: 'app-novo-projeto',
   standalone: true,
@@ -16,10 +28,14 @@ import {
 })
 export class NovoProjetoComponent implements OnInit {
   @Output() cancel = new EventEmitter<void>();
-  @Output() confirm = new EventEmitter<void>();
+  @Output() confirm = new EventEmitter<NovoProjetoFormValue>();
 
   states: IbgeState[] = [];
   cities: IbgeCity[] = [];
+  projectName = '';
+  description = '';
+  startDate = '';
+  identifier = '';
   selectedStateId: number | null = null;
   selectedCityId: number | null = null;
   selectedType: 'urbanismo' | 'incorporacao' | null = 'urbanismo';
@@ -50,5 +66,34 @@ export class NovoProjetoComponent implements OnInit {
 
   setType(type: 'urbanismo' | 'incorporacao'): void {
     this.selectedType = type;
+  }
+
+  get canSubmit(): boolean {
+    return !!this.projectName.trim() && !!this.selectedType;
+  }
+
+  confirmCreate(): void {
+    if (!this.canSubmit || !this.selectedType) {
+      return;
+    }
+
+    const selectedState = this.states.find(
+      (state) => state.id === this.selectedStateId,
+    );
+    const selectedCity = this.cities.find(
+      (city) => city.id === this.selectedCityId,
+    );
+
+    this.confirm.emit({
+      name: this.projectName.trim(),
+      description: this.description.trim(),
+      startDate: this.startDate,
+      identifier: this.identifier.trim(),
+      stateId: this.selectedStateId,
+      cityId: this.selectedCityId,
+      type: this.selectedType,
+      stateName: selectedState?.nome ?? '',
+      cityName: selectedCity?.nome ?? '',
+    });
   }
 }

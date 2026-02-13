@@ -1,0 +1,54 @@
+<section class="study-list-page">
+  <header class="page-header">
+    <h1>{{ pageTitle }}</h1>
+    <p>Os estudos criados em "Criar Estudo" aparecem aqui.</p>
+  </header>
+
+  <section class="empty" *ngIf="!studies.length">
+    <h2>Nenhum estudo cadastrado ainda</h2>
+    <p>Crie um estudo no menu "Criar Estudo" para listar aqui.</p>
+  </section>
+
+  <section class="table-wrap" *ngIf="studies.length">
+    <table class="studies-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Data de início do projeto</th>
+          <th>Tipo</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let study of studies">
+          <td>{{ study.name }}</td>
+          <td>{{ formatDate(study.startDate) }}</td>
+          <td>{{ formatType(study.type) }}</td>
+          <td>
+            <nz-tag [nzColor]="statusColor(study.status)">
+              {{ statusLabel(study.status) }}
+            </nz-tag>
+          </td>
+          <td>
+            <div class="actions">
+              <button type="button" (click)="openStudy(study)">
+                <nz-icon [nzType]="actionIcon" nzTheme="outline"></nz-icon>
+                {{ actionLabel }}
+              </button>
+              <button
+                *ngIf="canDelete"
+                type="button"
+                class="delete-btn"
+                (click)="deleteStudy(study)"
+              >
+                <nz-icon nzType="delete" nzTheme="outline"></nz-icon>
+                Apagar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>

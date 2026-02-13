@@ -17,19 +17,33 @@
       nz-menu-item
       nz-tooltip
       nzTooltipPlacement="right"
-      [nzTooltipTitle]="isCollapsed ? 'Menu principal' : ''"
+      [nzTooltipTitle]="isCollapsed ? 'Criar Estudo' : ''"
       routerLink="/"
       routerLinkActive="ant-menu-item-selected"
       [routerLinkActiveOptions]="{ exact: true }"
     >
-      <nz-icon nzType="home"></nz-icon>
-      <span>Menu principal</span>
+      <nz-icon nzType="project" nzTheme="twotone"></nz-icon>
+      <span>Criar Estudo</span>
     </li>
     <li
-      *ngIf="isStudyRoute"
+      nz-menu-item
+      nz-tooltip
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Editar Estudo' : ''"
+      routerLink="/estudos/editar"
+      routerLinkActive="ant-menu-item-selected"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [nzSelected]="isModeActive('editar')"
+    >
+      <nz-icon nzType="edit" nzTheme="twotone"></nz-icon>
+      <span>Editar Estudo</span>
+    </li>
+    <li
+      *ngIf="isModeActive('editar')"
       nz-submenu
+      nzOpen
       nzTitle="Estudo em andamento"
-      nzIcon="profile"
+      nzIcon="unordered-list"
     >
       <ul>
         <li
@@ -46,28 +60,81 @@
       nz-menu-item
       nz-tooltip
       nzTooltipPlacement="right"
-      [nzTooltipTitle]="isCollapsed ? 'Aprova estudo' : ''"
+      [nzTooltipTitle]="isCollapsed ? 'Consultar Estudo' : ''"
+      routerLink="/estudos/consultar"
+      routerLinkActive="ant-menu-item-selected"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [nzSelected]="isModeActive('consultar')"
     >
-      <nz-icon nzType="check-circle"></nz-icon>
-      <span>Aprova estudo</span>
+      <nz-icon nzType="eye" nzTheme="twotone"></nz-icon>
+      <span>Consultar Estudo</span>
+    </li>
+    <li
+      *ngIf="isModeActive('consultar')"
+      nz-submenu
+      nzOpen
+      nzTitle="Estudo em andamento"
+      nzIcon="unordered-list"
+    >
+      <ul>
+        <li
+          *ngFor="let step of steps; let i = index"
+          nz-menu-item
+          [nzSelected]="activeStep === i"
+          (click)="goToStep(i)"
+        >
+          {{ i + 1 }}. {{ step }}
+        </li>
+      </ul>
     </li>
     <li
       nz-menu-item
       nz-tooltip
       nzTooltipPlacement="right"
-      [nzTooltipTitle]="isCollapsed ? 'FAQ' : ''"
+      [nzTooltipTitle]="isCollapsed ? 'Aprovar Estudo' : ''"
+      routerLink="/estudos/aprovar"
+      routerLinkActive="ant-menu-item-selected"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [nzSelected]="isModeActive('aprovar')"
     >
-      <nz-icon nzType="question-circle"></nz-icon>
-      <span>FAQ</span>
+      <nz-icon nzType="check-square" nzTheme="twotone"></nz-icon>
+      <span>Aprovar Estudo</span>
+    </li>
+    <li
+      *ngIf="isModeActive('aprovar')"
+      nz-submenu
+      nzOpen
+      nzTitle="Estudo em andamento"
+      nzIcon="unordered-list"
+    >
+      <ul>
+        <li
+          *ngFor="let step of steps; let i = index"
+          nz-menu-item
+          [nzSelected]="activeStep === i"
+          (click)="goToStep(i)"
+        >
+          {{ i + 1 }}. {{ step }}
+        </li>
+      </ul>
     </li>
     <li
       nz-menu-item
       nz-tooltip
       nzTooltipPlacement="right"
-      [nzTooltipTitle]="isCollapsed ? 'Glossario' : ''"
+      [nzTooltipTitle]="isCollapsed ? 'Emitir Parecer' : ''"
     >
-      <nz-icon nzType="book"></nz-icon>
-      <span>Glossario</span>
+      <nz-icon nzType="diff" nzTheme="twotone"></nz-icon>
+      <span>Emitir Parecer</span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Consultar Relatório' : ''"
+    >
+      <nz-icon nzType="profile" nzTheme="twotone"></nz-icon>
+      <span>Consultar Relatório</span>
     </li>
     <li
       nz-menu-item
@@ -75,8 +142,35 @@
       nzTooltipPlacement="right"
       [nzTooltipTitle]="isCollapsed ? 'Dashboard' : ''"
     >
-      <nz-icon nzType="dashboard"></nz-icon>
+      <nz-icon nzType="dashboard" nzTheme="twotone"></nz-icon>
       <span>Dashboard</span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'FAQ' : ''"
+    >
+      <nz-icon nzType="question-circle" nzTheme="twotone"></nz-icon>
+      <span>FAQ</span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Glossário' : ''"
+    >
+      <nz-icon nzType="file-word" nzTheme="twotone"></nz-icon>
+      <span>Glossário</span>
+    </li>
+    <li
+      nz-menu-item
+      nz-tooltip
+      nzTooltipPlacement="right"
+      [nzTooltipTitle]="isCollapsed ? 'Política de Privacidade' : ''"
+    >
+      <nz-icon nzType="safety-certificate" nzTheme="twotone"></nz-icon>
+      <span>Política de Privacidade</span>
     </li>
   </ul>
 </div>

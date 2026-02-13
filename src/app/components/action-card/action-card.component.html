@@ -1,4 +1,6 @@
 <div class="card" (click)="onClick()">
-  <div class="icon">{{ icon }}</div>
+  <div class="icon">
+    <span nz-icon [nzType]="icon" [nzTheme]="iconTheme"></span>
+  </div>
   <div class="title">{{ title }}</div>
 </div>

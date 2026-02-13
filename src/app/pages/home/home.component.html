@@ -4,22 +4,25 @@
       <img src="/assets/logo.png" alt="logo" *ngIf="false" />
     </div>
     <h1>Bem-vindo ao MaxViable</h1>
-    <p class="subtitle">O que voce deseja hoje?</p>
+    <p class="subtitle">O que você deseja hoje?</p>
 
     <div class="cards">
       <app-action-card
         title="Quero criar um estudo"
-        icon="🧩"
+        icon="project"
+        iconTheme="twotone"
         (select)="onCreateStudy()"
       ></app-action-card>
       <app-action-card
         title="Quero consultar um estudo"
-        icon="🔎"
+        icon="eye"
+        iconTheme="twotone"
         (select)="onConsultStudy()"
       ></app-action-card>
       <app-action-card
         title="Quero aprovar um estudo"
-        icon="✅"
+        icon="check-square"
+        iconTheme="twotone"
         (select)="onApproveStudy()"
       ></app-action-card>
     </div>
@@ -32,7 +35,7 @@
   >
     <app-novo-projeto
       (cancel)="closeCreateModal()"
-      (confirm)="confirmCreate()"
+      (confirm)="confirmCreate($event)"
     ></app-novo-projeto>
   </div>
 </section>

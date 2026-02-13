@@ -14,6 +14,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { StepStateService } from '../../services/step-state.service';
 
+type StudyMode = 'editar' | 'consultar' | 'aprovar';
+
 @Component({
   selector: 'app-sidebar',
   standalone: true,
@@ -38,13 +40,13 @@ export class SidebarComponent implements OnInit, OnDestroy {
   activeStep = 0;
 
   readonly steps = [
-    'Identificacao do projeto',
-    'Cenarios',
-    'Orcamento de obras',
-    'Negociacao de terreno',
-    'Estruturacao da receita',
-    'Estruturacao das despesas e custos',
-    'Estruturacao das fontes de recursos',
+    'Identificação do projeto',
+    'Cenários',
+    'Orçamento de obras',
+    'Negociação de terreno',
+    'Estruturação da receita',
+    'Estruturação das despesas e custos',
+    'Estruturação das fontes de recursos',
     'Sensibilidade de riscos',
     'Resultado',
   ];
@@ -57,7 +59,28 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ) {}
 
   get isStudyRoute(): boolean {
-    return this.router.url.startsWith('/estudo');
+    const urlTree = this.router.parseUrl(this.router.url);
+    const firstSegment = urlTree.root.children['primary']?.segments[0]?.path;
+    const studyId = urlTree.queryParams['studyId'];
+
+    return firstSegment === 'estudo' && !!studyId;
+  }
+
+  get currentStudyMode(): StudyMode | null {
+    if (!this.isStudyRoute) {
+      return null;
+    }
+
+    const mode = this.router.parseUrl(this.router.url).queryParams['mode'];
+    if (mode === 'consultar' || mode === 'aprovar') {
+      return mode;
+    }
+
+    return 'editar';
+  }
+
+  isModeActive(mode: StudyMode): boolean {
+    return this.currentStudyMode === mode;
   }
 
   ngOnInit(): void {
@@ -73,8 +96,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   goToStep(stepIndex: number): void {
     this.stepState.setActiveStep(stepIndex);
+
     if (!this.isStudyRoute) {
-      this.router.navigate(['/estudo']);
+      this.router.navigate(['/estudo'], {
+        queryParams: { mode: 'editar' },
+      });
     }
   }
 

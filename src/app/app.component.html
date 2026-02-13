@@ -2,13 +2,71 @@
 
 <header class="topbar">
   <div class="topbar-icons">
-    <button class="icon-btn" type="button" aria-label="Bug">
-      <nz-icon nzType="bug" nzTheme="outline"></nz-icon>
-    </button>
-    <button class="icon-btn" type="button" aria-label="Notificacoes">
+    <div
+      class="support-wrap"
+      (mouseenter)="openSupportPanel()"
+      (mouseleave)="closeSupportPanel()"
+    >
+      <button
+        class="icon-btn"
+        type="button"
+        aria-label="Bug"
+        (click)="toggleSupportPanel($event)"
+      >
+        <nz-icon nzType="bug" nzTheme="outline"></nz-icon>
+      </button>
+
+      <section class="support-panel" *ngIf="showSupportPanel">
+        <div class="support-header">
+          <h3>Solicitação de Suporte</h3>
+          <span class="support-icon" aria-hidden="true">
+            <nz-icon nzType="bug" nzTheme="outline"></nz-icon>
+          </span>
+        </div>
+
+        <label class="field-label" for="supportTitle">
+          Título <span>*</span>
+        </label>
+        <input
+          id="supportTitle"
+          class="field-input"
+          type="text"
+          [(ngModel)]="supportTitle"
+        />
+
+        <label class="field-label" for="supportDescription">
+          Descrição <span>*</span>
+        </label>
+        <textarea
+          id="supportDescription"
+          class="field-textarea"
+          rows="3"
+          [(ngModel)]="supportDescription"
+        ></textarea>
+
+        <div class="support-footer">
+          <label class="file-label" for="supportFile">Anexo (opcional)</label>
+          <input
+            id="supportFile"
+            class="file-input"
+            type="file"
+            (change)="onSupportFileChange($event)"
+          />
+          <div class="support-actions">
+            <button type="button" class="send-btn" (click)="sendSupport()">
+              Enviar
+            </button>
+          </div>
+        </div>
+
+        <p class="file-name" *ngIf="supportFileName">{{ supportFileName }}</p>
+        <p class="feedback" *ngIf="supportFeedback">{{ supportFeedback }}</p>
+      </section>
+    </div>
+    <button class="icon-btn" type="button" aria-label="Notificações">
       <nz-icon nzType="bell"></nz-icon>
     </button>
-    <button class="icon-btn" type="button" aria-label="Configuracoes">
+    <button class="icon-btn" type="button" aria-label="Configurações">
       <nz-icon nzType="setting"></nz-icon>
     </button>
     <button class="icon-btn" type="button" aria-label="Perfil">

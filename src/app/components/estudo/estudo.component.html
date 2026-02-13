@@ -1,11 +1,14 @@
 <section class="flow" [class.with-insights]="showInsights">
   <div class="flow-header">
-    <button class="back-btn" type="button" routerLink="/">
-      Voltar ao inicio
-    </button>
+    <button class="back-btn" type="button" routerLink="/">Voltar</button>
     <button class="panel-btn" type="button" (click)="toggleInsights()">
       {{ showInsights ? "Ocultar painel" : "Mostrar painel" }}
     </button>
+  </div>
+
+  <div class="content">
+    <h2>Etapa atual: {{ steps[active].title }}</h2>
+    <p class="lead">Use o passo a passo abaixo para navegar entre as seções.</p>
   </div>
 
   <div class="top">
@@ -18,29 +21,24 @@
     </div>
   </div>
 
-  <div class="content">
-    <h2>Etapa atual: {{ steps[active].title }}</h2>
-    <p class="lead">Use o passo a passo acima para navegar entre as secoes.</p>
-  </div>
-
   <aside class="insights" [class.collapsed]="!showInsights">
     <div class="insights-header">
-      <h3>Resumo rapido</h3>
+      <h3>Análise Gráfica</h3>
       <button class="icon-toggle" type="button" (click)="toggleInsights()">
         {{ showInsights ? ">" : "<" }}
       </button>
     </div>
     <div class="insights-section">
       <div class="insight-row">
-        <span>Lancamento</span>
+        <span>Lançamento</span>
         <strong>jun/2026</strong>
       </div>
       <div class="insight-row">
-        <span>Termino das vendas</span>
+        <span>Término das vendas</span>
         <strong>set/2029</strong>
       </div>
       <div class="insight-row">
-        <span>Termino da carteira</span>
+        <span>Término da carteira</span>
         <strong>N/A</strong>
       </div>
     </div>
@@ -51,7 +49,7 @@
     </div>
 
     <div class="chart-card">
-      <div class="chart-title">Composicao da receita</div>
+      <div class="chart-title">Composição da receita</div>
       <canvas #revenueChart width="280" height="160"></canvas>
     </div>
   </aside>

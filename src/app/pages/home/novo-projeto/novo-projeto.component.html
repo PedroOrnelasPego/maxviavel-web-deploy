@@ -1,24 +1,28 @@
 <div class="modal" (click)="$event.stopPropagation()">
   <div class="modal-header">
     <h3>Novo projeto</h3>
-    <p>Preencha os dados basicos para iniciar.</p>
+    <p>Preencha os dados básicos para iniciar.</p>
   </div>
 
   <div class="form-grid">
     <div class="field full">
       <label>Nome do projeto</label>
-      <input type="text" placeholder="Nome do projeto" />
+      <input
+        type="text"
+        placeholder="Nome do projeto"
+        [(ngModel)]="projectName"
+      />
     </div>
     <div class="field full">
-      <textarea rows="2" placeholder="Adicionar descricao..."></textarea>
+      <textarea
+        rows="2"
+        placeholder="Adicionar descrição..."
+        [(ngModel)]="description"
+      ></textarea>
     </div>
     <div class="field">
-      <label>Data de inicio do projeto</label>
-      <input type="date" />
-    </div>
-    <div class="field">
-      <label>Identificador</label>
-      <input type="text" placeholder="Opcional" />
+      <label>Data de início do projeto</label>
+      <input type="date" [(ngModel)]="startDate" />
     </div>
     <div class="field">
       <label>Estado</label>
@@ -65,18 +69,18 @@
           (click)="setType('incorporacao')"
           [attr.aria-pressed]="selectedType === 'incorporacao'"
         >
-          Incorporacao
+          Incorporação
         </button>
       </div>
       <p class="hint">
-        Envolve a venda de terrenos ou lotes e a construcao de edificacoes.
+        Envolve a venda de terrenos ou lotes e a construção de edificações.
       </p>
     </div>
     <div class="field full">
       <div class="meta-row">
         <span class="meta-chip">Plano Teste</span>
         <span class="meta-chip">126% a.m.</span>
-        <span class="meta-chip">1 fase de aprovacao</span>
+        <span class="meta-chip">1 fase de aprovação</span>
       </div>
     </div>
   </div>
@@ -85,7 +89,12 @@
     <button class="modal-secondary" type="button" (click)="cancel.emit()">
       Cancelar
     </button>
-    <button class="modal-primary" type="button" (click)="confirm.emit()">
+    <button
+      class="modal-primary"
+      type="button"
+      [disabled]="!canSubmit"
+      (click)="confirmCreate()"
+    >
       Concluir
     </button>
   </div>
